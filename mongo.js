@@ -21,18 +21,18 @@ const Person = mongoose.model('Person', personSchema)
 
 
 if (process.argv.length > 3) {
-    const curName = process.argv[3]
-    const curNumber = process.argv[4]
+  const curName = process.argv[3]
+  const curNumber = process.argv[4]
 
-    const person = new Person({
-        name: curName,
-        number: curNumber
-      })
+  const person = new Person({
+    name: curName,
+    number: curNumber
+  })
 
-      person.save().then(result => {
-        console.log(`added ${person.name} number ${person.number} to phonebook`)
-        mongoose.connection.close()
-      })
+  person.save().then(result => {
+    console.log(`added ${person.name} number ${person.number} to phonebook`)
+    mongoose.connection.close()
+  })
 } else {
     console.log('phonebook:')
     Person.find({}).then(result => {
